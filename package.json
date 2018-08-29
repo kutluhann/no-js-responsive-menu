@@ -1,0 +1,20 @@
+{
+  "name": "no-js-responsive-menu",
+  "version": "1.0.0",
+  "description": "No Javascript Responsive Menu",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Hasan Kutluhan Şıpka",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.24.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-prettify": "^0.5.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1"
+  }
+}

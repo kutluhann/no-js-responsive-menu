@@ -1,0 +1,223 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext');
+
+//Variables
+$animation-duration: .5s;
+$main-color: blueviolet;
+
+//Mixins
+@mixin media() {
+  @media (max-width: 767px) {
+    @content
+  }
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Open Sans', Arial;
+}
+
+.navbar{
+  border-bottom: 1px solid #ddd;
+  position: relative;
+  a{
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .container{
+    height: 60px;
+    max-width: 1140px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-brand{
+    color: $main-color;
+  }
+  &-checkbox{
+    position: absolute;
+    left: -9999px;
+    &:checked{
+      & ~ .navbar-switch{
+        span{
+          &:nth-child(1){
+            animation: $animation-duration child-1-2 forwards; 
+          }
+          &:nth-child(2){
+            animation: $animation-duration child-2-2 forwards; 
+          }
+          &:nth-child(3){
+            animation: $animation-duration child-3-2 forwards; 
+          }
+        }
+      }
+      & ~ .navbar-menu{
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: unset;
+      }
+    }
+  }
+  &-switch{
+    display: none;
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+    height: 52px;
+    width: 52px;
+    @include media(){
+      display: block;
+    }
+    span{
+      position: absolute;
+      display: block;
+      left: calc(50% - 12px);
+      height: 2px;
+      width: 24px;
+      background-color: $main-color;
+      border-radius: 100px;
+      &:nth-child(1){
+        top: calc(50% - 9px);
+        animation: $animation-duration child-1-1;
+      }
+      &:nth-child(2){
+        top: calc(50% - 1px);
+        animation: $animation-duration child-2-1;
+      }
+      &:nth-child(3){
+        top: calc(50% + 7px);
+        animation: $animation-duration child-3-1;
+      }
+    }
+  }
+  &-menu{
+    transition: $animation-duration ease;
+    @include media(){
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      transform: translateY(-100%);
+      pointer-events: none;
+      opacity: 0;
+      background-color: $main-color;
+    }
+    &-item{
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      color: #aaa;
+      padding: 10px;
+      border-radius: 4px;
+      &:hover{
+        background-color: #eee;
+      }
+      @include media(){
+        color: #eee;
+        display: block;
+        padding: 12px 20px;
+        &:hover{
+          background-color: rgba($main-color + 20,1) !important;
+        }
+      }
+    }
+  }
+}
+
+//Keyframes
+
+@keyframes child-1-1{
+  0%{
+    transform: translateY(8px) rotate(45deg);
+  }
+  25%{
+    transform: translateY(0px) rotate(0deg);
+  }
+  50%{
+    transform: translateY(0px) rotate(0deg);
+  }
+  100%{
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes child-1-2{
+  50%{
+    transform: rotate(45deg);
+    width: 0;
+  }
+  75%{
+    transform: rotate(45deg);
+    width: 0;
+  }
+  100%{
+    transform: translateY(8px) rotate(45deg);
+  }
+}
+
+@keyframes child-2-1{
+  25%{
+    width: 0;
+  }
+  50%{
+    transform: translateX(8px);
+  }
+  75%{
+    transform: translateX(8px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+
+}
+
+@keyframes child-2-2{
+  25%{
+    transform: translateX(-8px);
+  }
+  50%{
+    transform: translateX(0px);
+    width: 0;
+  }
+  100%{
+    transform: translateX(0px);
+    width: 0; 
+  }
+
+}
+
+@keyframes child-3-1{
+  0%{
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  25%{
+    transform: translateY(0px) rotate(0deg);
+  }
+  50%{
+    transform: translateY(0px) rotate(0deg);
+  }
+  100%{
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes child-3-2{
+  50%{
+    transform: rotate(-45deg);
+    width: 0;
+  }
+  75%{
+    transform: rotate(-45deg);
+    width: 0;
+  }
+  100%{
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
